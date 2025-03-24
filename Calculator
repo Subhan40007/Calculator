@@ -1,0 +1,59 @@
+package Calculator;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+        List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+
+        double num1, num2;
+        int operator;
+        boolean isRunnnig = true;
+
+        while (isRunnnig) {
+            System.out.println();
+            System.out.println("Welcome to Caculyator!");
+            System.out.println("1.+");
+            System.out.println("2.-");
+            System.out.println("3.*");
+            System.out.println("4.÷");
+            System.out.println("5.exit()");
+
+            System.out.print("Choice the operation(1-5): ");
+            operator = input.nextInt();
+            if (operator == 5) {
+                isRunnnig = false;
+            } else if (list.contains(operator)) {
+
+                System.out.print("Enter the first number: ");
+                num1 = input.nextDouble();
+
+                System.out.print("Enter the second number: ");
+                num2 = input.nextDouble();
+                switch (operator) {
+                    case 1 -> System.out.printf("Result: %.2f", (num1 + num2));
+                    case 2 -> System.out.printf("Result: %.2f", (num1 - num2));
+                    case 3 -> System.out.printf("Result: %.2f", (num1 * num2));
+                    case 4 -> {
+                        try {
+                            System.out.println("Result: " + (num1 / num2));
+                        } catch (ArithmeticException e) {
+                            System.out.println("Not Division by zero");
+                        } catch (Exception e) {
+                            System.out.println("Something went wrong");
+                        }
+                    }
+                }
+            } else {
+                System.out.println("Invalid operation!");
+            }
+        }
+        System.out.println("Goodbye!");
+
+    }
+}
